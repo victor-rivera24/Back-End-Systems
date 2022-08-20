@@ -1,0 +1,5 @@
+En conclusión:
+TS  -> Apache + Windows
+NTS -> IIS + Windows
+
+sudo apt install php7.4-pgsq

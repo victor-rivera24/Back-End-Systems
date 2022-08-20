@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Envelope>
+  <Order>
+    <UserID>-1000009</UserID>
+    <SellerID>-1000009</SellerID>
+    <OrderID>1000993</OrderID>
+    <ShipmentID/>
+    <DateCreated>2022-04-30 00:00:00</DateCreated>
+    <OfficialStore/>
+    <BuyerNickname/>
+    <BuyerName>IMSS</BuyerName>
+    <BuyerPhone/>
+    <BuyerStreet>Lerma Mz4lt16 SN num int. , num ext. </BuyerStreet>
+    <BuyerCity>Ixtapaluca </BuyerCity>
+    <BuyerState>México</BuyerState>
+    <BuyerCountry>México</BuyerCountry>
+    <BuyerZipCode>56538</BuyerZipCode>
+    <LogisticType/>
+    <TrackingMethod/>
+    <TrackingNumber/>
+    <SKU>R160UN0037</SKU>
+    <ItemID>15005636</ItemID>
+    <ItemTitle>CREMA PULIDORA PARA FAROS DE 100 GR</ItemTitle>
+    <Quantity>1</Quantity>
+    <UnitPrice>155</UnitPrice>
+    <TotalAmount>155</TotalAmount>
+    <OrderStatus>Por embarcar con Proveedor</OrderStatus>
+    <ShipmentStatus/>
+    <SellerNickname>REFIVIDRIO</SellerNickname>
+    <ShipmentCost>0</ShipmentCost>
+    <PaymentID/>
+    <PaymentType/>
+    <URL/>
+  </Order>
+</Envelope>
