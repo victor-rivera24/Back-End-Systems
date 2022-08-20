@@ -6,7 +6,9 @@ class WhatsappBird{
     private $channel = "0918cbb1-86b7-4d6f-9959-153c2dd907f5";  
     private $espacio_nombres = "6d9ed156_697a_43b6_a928_13253b13fcab";
     private $language = "es_MX";
-    private $token = "TxdyQCnYEM3tz80aM0iYQSeP6";
+    // private $token = "TxdyQCnYEM3tz80aM0iYQSeP6";
+    private $token = "qmdRu7pd4nEoIA0HP7nmosdne";
+    // private $token = "AdqJQbRokVw2mlktz6TYWjZA5UkbO4eZ";
 
     public function mensajeRecojerPedido($vCelular,$vMedia,$vMensaje)
     {

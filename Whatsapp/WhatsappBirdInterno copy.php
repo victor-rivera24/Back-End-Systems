@@ -3,10 +3,11 @@
 class WhatsappBirdInternoDemo{
 
     private $url = "https://conversations.messagebird.com/v1/send";
-    private $channel = "3bc3cd4a-8d9c-4278-b90b-e16f713f3b23";  
+    private $channel = "3bc3cd4a-8d9c-4278-b90b-e16f713f3b23";  // CANAL DE WHATSAPPS
     private $espacio_nombres = "6d9ed156_697a_43b6_a928_13253b13fcab";
-    private $language = "es_MX";
-    private $token = "TxdyQCnYEM3tz80aM0iYQSeP6";
+    private $language = "es_MX"; //IDIOMA DE PLANTILLA WHATSAPPS
+    private $token = "qmdRu7pd4nEoIA0HP7nmosdne";
+    // private $token = "TxdyQCnYEM3tz80aM0iYQSeP6";
     private $urlMedia = "https://apps.refividrio.com.mx/resources/amoresens/CUPON_DE_REGALO.png";
 
     public function asdasdasdasd()
