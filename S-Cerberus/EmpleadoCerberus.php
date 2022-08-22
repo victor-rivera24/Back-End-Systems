@@ -6,44 +6,10 @@ include_once $base . '/DB/ConexionCerberus.php';
 include_once $base . '/S-Developer/Dev_Empleado.php';
 include_once $base . '/Email/Email.php';
 
-class EmpleadoCerberus extends ConexionCerberus
-{
-
-    // public function obtenerEmpleado()
-	// {
-    //     $data = [];
-    //     $vDistribuidor = null;
-    //     $vRespuesta = null;
-
-    //     $query = "SELECT
-    //     top(10)
-    //     nombreEmpleado
-    //     ,apPatEmpleado
-    //     ,apMatEmpleado
-    //     FROM Empleado WHERE idEmpresa = 5 AND esActivo = 1";
-
-	// 	$stmt = ConexionCerberus::abrirConexion()->prepare($query, [PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL,]);
-    //     //$sentencia = $base_de_datos->prepare($consulta, [PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL,]);
-
-    //     $stmt->execute();
-
-    //     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    //         echo $row['nombreEmpleado']." ";
-    //         echo " ". $row['apPatEmpleado']." ";
-    //         echo " ". $row['apMatEmpleado']." ";
-    //         echo "<br>";
-    //         //$log = new Dev_Log();
-    //         //$log->agregarLog($vMovimiento,$vSolicitud,$vDistribuidor,json_encode($row),$vRespuesta,$vMedio);
-    //     }
-
-    //     return $data;
-
-    //     ConexionCerberus::cerrarConexion();
-	// }
+class EmpleadoCerberus extends ConexionCerberus{
 
 
-    public function obtenerEmpleadoIncidenciaBaja($Movimiento)
-	{
+    public function obtenerEmpleadoIncidenciaBaja($Movimiento){
 
         (int) $IDEmpleado = null;
         (int) $IDEmpresa = null;
@@ -188,10 +154,5 @@ class EmpleadoCerberus extends ConexionCerberus
 
 
 }
-
-// $orden = new EmpleadoCerberus();
-// $orden->obtenerEmpleadoIncidenciaBaja('Baja-EmpleadoUsuario-Surver');
-
-
 
 ?>

@@ -12,7 +12,7 @@ class Empleado extends ConexionDeveloper{
 
 	public function consultaEmpleadoCerberus($vMovimiento,$vIDEmpresa,$vIDEmpleado,$Nombre_Empleado,$vActivo,$vNSS,$vRFC,$vCURP,$vFechaIncidencia,$vNumeroSemana){
 
-                echo $vIDEmpleado;
+                // echo $vIDEmpleado;
 
                 try {
                         $consulta = "SELECT * FROM c_empleado WHERE tipo_movimiento = '".$vMovimiento."' AND id_empresa = :empresa  AND id_empleado = :empleado AND semana = :semana ;";
@@ -132,8 +132,6 @@ class Empleado extends ConexionDeveloper{
                         $vNSS = null;
 
                         
-                        //'Baja-Surver'
-
                         $consulta = "SELECT *,extract(week from CURRENT_DATE) FROM c_empleado WHERE tipo_movimiento = '".$vMovimiento."' AND procesado = false AND semana = extract(week from CURRENT_DATE);";
                         $stmt = ConexionDeveloper::abrirConexion()->prepare($consulta);
 
@@ -161,6 +159,12 @@ class Empleado extends ConexionDeveloper{
                                         $empleado_adempiere = new EmpleadoADempiereRFV();
                                         $r = $empleado_adempiere->consultaEmpleadoADempiere($vEmpresa,$vEmpleado,$vRFC,$vCURP);
 
+
+                                }else if($vMovimiento == "Baja-EmpleadoUsuario-ADempiere"){
+
+                                        $usuario_adempiere = new EmpleadoADempiereRFV();
+                                        $r = $usuario_adempiere->consultaEmpleadoUsuarioADempiere($vEmpresa,$vEmpleado,$vRFC,$vCURP);
+
                                 }
 
                         }
@@ -181,7 +185,7 @@ class Empleado extends ConexionDeveloper{
 
 
 // $empleado = new Empleado();
-// $empleado->consultaDeveloperEmpleadoCerberus('Baja-Empleado_ADempiere');
+// $empleado->consultaDeveloperEmpleadoCerberus('Baja-EmpleadoUsuario-ADempiere');
 
 
 

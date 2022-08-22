@@ -4,11 +4,11 @@ $base = dirname(dirname(__FILE__));
 
 include_once $base . '/DB/ConexionADempiere_RFV.php';
 include_once $base . '/S-Developer/Dev_Empleado.php';
-include_once $base . '/WebServiceADempiere/WS_Empleado_RFV.php';
+// include_once $base . '/WebServiceADempiere/WS_Empleado_RFV.php';
+include_once $base . '/WebServiceADempiere/WS_RFV.php';
 include_once $base . '/Email/Email.php';
 
-class RFV_OrdenVenta extends ConexionADempiereRFV
-{
+class RFV_OrdenVenta extends ConexionADempiereRFV{
 
     public function ordenVentaEcommerce()
 	{
@@ -74,11 +74,5 @@ class RFV_OrdenVenta extends ConexionADempiereRFV
 	}
 
 }
-
-// $orden = new Orden();
-// $orden->buscarOrdenPendienteEntrega('ADempiere','Orden','Email');
-// $orden->buscarOrdenPendienteEntrega('ADempiere','Orden','WhatsApp');
-
-
 
 ?>
