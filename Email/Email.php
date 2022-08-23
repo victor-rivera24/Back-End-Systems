@@ -48,16 +48,20 @@ class Email{
                     //$Mail->SMTPDebug = 0; // Comenta esto antes de producción
                     $Mail->CharSet = 'UTF-8';
                     $Mail->isSMTP();
-                    $Mail->Host="mail.refividrio.com.mx";
-                    $Mail->SMTPAuth = true;
-                    $Mail->Username="desarrollo@refividrio.com.mx";
+                    // $Mail->Host="mail.refividrio.com.mx";
+                    // $Mail->SMTPAuth = true;
+                    // $Mail->Username="desarrollo@refividrio.com.mx";
                     // $Mail->Password="D3$@rr0ll0$#20";
-                    $Mail->Password="[D3$@rr0ll0$22_R3F1V1DR10$22]";
+                    // $Mail->Password="[D3$@rr0ll0$22_R3F1V1DR10$22]";
+                    $Mail->Host = $this->vDomain;
+                    $Mail->SMTPAuth = true;
+                    $Mail->Username = $this->vUser;
+                    $Mail->Password = $this->vPassword;
                     $Mail->SMTPSecure = "ssl";
                     $Mail->Port = 465;
                 
                     // Destinatario
-                    $Mail->setFrom('desarrollo@refividrio.com.mx', $Encabezado);
+                    $Mail->setFrom($this->vUser, $Encabezado);
                     //$Mail->addAddress('vvrh.victor.rivera@gmail.com','Vic');
 
                     // //Recorrer Array
