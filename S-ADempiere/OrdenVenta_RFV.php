@@ -47,12 +47,9 @@ class RFV_OrdenVenta extends ConexionADempiereRFV{
 		$stmt = ConexionADempiereRFV::abrirConexion()->prepare($query);
         $stmt -> execute();
 
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-   
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
             $vIdOrden =  $row['c_order_id'];
-
-
             // $data[] = [
             //     'solicitud' => $vSolicitud,
             //     'razonsocial' => $vDistribuidor,
