@@ -25,7 +25,8 @@ class Email{
     // private $vPassword = "[D3$@rr0ll0$22_R3F1V1DR10$22]"; 
 
     private $vUser = "desarrollo@rfv-truck-parts-accessories.com.mx";
-    private $vPassword = "[D3$@rr0ll0$22_R3F1V1DR10$22]";
+    // private $vPassword = "[D3$@rr0ll0$22_R3F1V1DR10$22]";
+    private $vPassword = "[D3$@rr0ll0&Pr0gr@m@c10n]$22";
     private $vDomain = "mail.rfv-truck-parts-accessories.com.mx";    
 
     
