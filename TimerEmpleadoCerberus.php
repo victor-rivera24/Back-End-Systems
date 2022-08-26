@@ -34,7 +34,7 @@
 
     }
 
-    public function procesar_Baja_Usuario_ADempiere(){
+    public function procesar_Baja_EmpleadoUsuario_ADempiere(){
  
       $cerberus = new EmpleadoCerberus();
       $cerberus->obtenerEmpleadoIncidenciaBaja("Baja-EmpleadoUsuario-ADempiere");
@@ -60,7 +60,7 @@
    
     case 'Baja-EmpleadoUsuario-ADempiere': 
       $Timer = new TimerEmpleadoCerberus();
-      $Timer->procesar_Baja_Empleado_ADempiere(); 
+      $Timer->procesar_Baja_EmpleadoUsuario_ADempiere(); 
 
     break;     
  
