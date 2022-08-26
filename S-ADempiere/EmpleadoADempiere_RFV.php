@@ -176,7 +176,7 @@ class EmpleadoADempiereRFV extends ConexionADempiereRFV
     WHERE
         cb.C_BP_Group_ID = 1000002
         AND us.Name ILIKE '%.%'
-        AND us.Isactive = 'Y'
+        --AND us.Isactive = 'Y'
         AND cb.TaxID = '".$vRFC."'
         AND array_length (string_to_array(us.Name,' ')::VARCHAR[],1) = 1";
 
