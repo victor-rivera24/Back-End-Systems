@@ -2,83 +2,57 @@
 
 class WhatsappBirdInterno{
 
-    private $url = "https://conversations.messagebird.com/v1/send";
-    private $channel = "3bc3cd4a-8d9c-4278-b90b-e16f713f3b23";  
-    private $espacio_nombres = "6d9ed156_697a_43b6_a928_13253b13fcab";
-    private $language = "es_MX";
-    private $token = "TxdyQCnYEM3tz80aM0iYQSeP6";
+    private $endpoint = 'https://apps-ws.refividrio.com.mx:5252/';
+    private $token = 'eyJhbGciOiJIUzI1NiJ9.dXN1YXJpb01lc3NhZ2VCaXJkV2hhdHNhcHA.k_9BpJn3XKh5U-j-IboLzrM2xf30KniPvaXNvZPsOgY';  
     private $urlMedia = "https://apps.refividrio.com.mx/resources/amoresens/CUPON_DE_REGALO.png";
 
-    public function mensajeFelizCumple($vEmpleado,$vCelular)
-    {
+    public function mensajeFelizCumple($vEmpleado,$vCelular){
 
-        $contacto = "+52".$vCelular;
-        // $contacto = "+525576100176";
+      try {
+          $response = null;
+          $url = $this->endpoint.'happyBirthdayEmployee';
+          $header = array("Content-Type: application/json","access-token: $this->token");
+         
+          $jsonData = array(
+                            "vCelular" => $vCelular
+                            ,"vNombre" => $vEmpleado
+                          );
 
-        $vMensaje = "*¡Feliz cumpleaños ".$vEmpleado." !* 🎂🎉🎊";
-        // $vMensaje = "*".$vEmpleado."* En Refividrio®️ agradecemos que formes parte de nuestro equipo de trabajo, y como un pequeño detalle por tu cumpleaños (que fue en enero o febrero), compartimos contigo el siguiente cupón de descuento. Tienes todo el mes de marzo para hacerlo válido. ¡Ten un excelente día!";
-        
+          $json = json_encode($jsonData);
 
-        $jsonobj = '
-        {
-            "content": {
-              "hsm": {
-                "language": {
-                  "code": "'.$this->language.'"
-                  ,"policy": "deterministic"
+          $ch = curl_init($url);
+          curl_setopt($ch, CURLOPT_POST,1);
+          curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+          curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+          $result =  curl_exec($ch);
+          $status = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
+          $status_endpoint = curl_error($ch);
+          curl_close($ch);
 
-                },
-                "components": [
-                  {
-                    "type": "header",
-                    "parameters": [
-                      {
-                        "type": "image",
-                        "image": {"url": "'.$this->urlMedia.'" }
-                      }
-          
-                    ]
-                  },
-                  {
-                    "type": "body",
-                    "parameters": [
-                      {
-                        "type": "text",
-                        "text": "'.$vMensaje.'"
-                      }
-                    ]
-                  }
-                ],
-                "namespace": "'.$this->espacio_nombres.'",
-                "templateName": "rfv_empleado_feliz"
-              }
-            },
-            "to": "'.$contacto.'",
-            "type": "hsm",
-            "from": "'.$this->channel.'"
+          // var_dump ($result);
+
+          if ( $status != 201 && $status != 200 ) {
+              // return  ("Error: call to URL $url failed with status $status, response $result, curl_error " . $status_endpoint . ",curl_errno" . $status_endpoint );
+              $response  = ("Error: call to URL $url failed with status $status, response $result, curl_error " . $status_endpoint . ",curl_errno" . $status_endpoint );
+
+          }else{
+              $response = $result;
+
           }
-        ';
 
-        echo "<br>";
-        print_r($jsonobj);
+          // print_r (json_decode($result));
+          // return json_decode($result);
+          print_r($response);
+          return $response;
+          
+      } catch (\Throwable $th) {
+          echo $th;
+          return false;
+      }
 
-        
-        $ch = curl_init($this->url);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonobj);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: AccessKey '. $this->token.'','Content-Type: application/json; charset=utf-8'));
-        $result = curl_exec($ch);
-        curl_close($ch);
-
-        print_r ($result);
-
-        return $result;
-
-    }
+  }
                 
 }
 
