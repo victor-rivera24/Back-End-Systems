@@ -95,7 +95,7 @@ class WebServiceADempiereRFV {
 
     try {
         
-        $url = $this->url.'desactivarUsuarioDirecto?vID='.$vID;
+        $url = $this->url.'desactivarSocioNegocioDirecto?vID='.$vID;
         $ch = curl_init($url);
         
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST,'GET');
