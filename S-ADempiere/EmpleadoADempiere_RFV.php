@@ -206,7 +206,62 @@ class EmpleadoADempiereRFV extends ConexionADempiereRFV
 
 
 
+    /** 
+     * En este metodo obtiene los usuarios activos.
+     * @param Integer $vEmpresa
+     * @param Integer $vEmpleado
+     * @param String $vRFC
+     * @param String $vCURP
+     * 
+     * @return DataTable Muestra de la consulta. 
+     * @author Victor Rivera
+    */
+    public function consultaSocioNegocioEmpleadoADempiere($vEmpresa,$vEmpleado,$vRFC,$vCURP)
+	{
 
+        (int) $AD_User_ID = null;
+        $Nombre_Empleado = $vEmpleado;
+        //$CURP = $vCURP;
+        $RFC = $vRFC;
+
+        $query = "SELECT 
+        GetColumnValue(cb.AD_Client_ID,'AD_Client','Name') AS Empresa
+        ,cb.Value AS Codigo
+        ,cb.Name ||' '||cb.Name2||' '||cb.Description AS SocioNegocio
+        ,cb.TaxID AS RFC
+        ,cb.Isactive AS ActivoSocio
+    FROM C_BPartner AS cb
+        LEFT JOIN AD_User AS us
+            ON us.C_BPartner_ID = cb.C_BPartner_ID
+            AND us.IsInternalUser = 'Y'
+    WHERE
+        cb.C_BP_Group_ID = 1000002
+        AND cb.TaxID = '".$vRFC."'
+        ";
+
+
+
+		$stmt = ConexionADempiereRFV::abrirConexion()->prepare($query);
+        //$sentencia = $base_de_datos->prepare($consulta, [PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL,]);
+
+        $stmt -> execute();
+        $resultado = $stmt -> fetchAll();
+
+        foreach ($resultado as $fila) {
+
+            $Nombre_Empleado = $fila['socionegocio'];
+            $AD_User_ID = $fila['ad_user_id'];
+            //$CURP = $fila['curp'];
+            $RFC = $fila['rfc'];
+
+            $WS_RFV = new WebServiceADempiereRFV();
+            $r = $WS_RFV->desactivarSocioNegocioDirecto($vEmpresa,$vEmpleado,$AD_User_ID);         
+        } 
+
+        return true;
+
+        ConexionADempiereRFV::cerrarConexion();
+	}
 
 
 

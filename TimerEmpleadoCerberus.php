@@ -41,6 +41,13 @@
 
     }
 
+    public function procesar_Baja_SocioNegocio_ADempiere(){
+ 
+      $cerberus = new EmpleadoCerberus();
+      $cerberus->obtenerEmpleadoIncidenciaBaja("Baja-SocioNegocio-ADempiere");
+
+    }
+
 
   }
  
@@ -61,6 +68,12 @@
     case 'Baja-EmpleadoUsuario-ADempiere': 
       $Timer = new TimerEmpleadoCerberus();
       $Timer->procesar_Baja_EmpleadoUsuario_ADempiere(); 
+
+    break;
+   
+    case 'Baja-SocioNegocio-ADempiere': 
+      $Timer = new TimerEmpleadoCerberus();
+      $Timer->procesar_Baja_SocioNegocio_ADempiere(); 
 
     break;     
  

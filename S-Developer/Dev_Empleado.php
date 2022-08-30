@@ -165,8 +165,12 @@ class Empleado extends ConexionDeveloper{
                                         $usuario_adempiere = new EmpleadoADempiereRFV();
                                         $r = $usuario_adempiere->consultaEmpleadoUsuarioADempiere($vEmpresa,$vEmpleado,$vRFC,$vCURP);
 
-                                }
+                                }else if($vMovimiento == "Baja-SocioNegocio-ADempiere"){
 
+                                        $usuario_adempiere = new EmpleadoADempiereRFV();
+                                        $r = $usuario_adempiere->consultaSocioNegocioEmpleadoADempiere($vEmpresa,$vEmpleado,$vRFC,$vCURP);
+
+                                }
                         }
 
                         return $resultado;

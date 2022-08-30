@@ -41,7 +41,12 @@
 
     }    
 
+    public function listadoSocioNegocioBaja_Developer_ADempiere(){
 
+      $empleado = new Empleado();
+      $empleado->consultaDeveloperEmpleadoCerberus('Baja-SocioNegocio-ADempiere');
+
+    } 
   }
  
   switch($evento){
@@ -64,7 +69,11 @@
 
     break;
 
+    case 'Empleado_SocioNegocio_ADempiere': 
+      $Timer = new TimerEmpleadoDeveloper();
+      $Timer->listadoSocioNegocioBaja_Developer_ADempiere(); 
 
+    break;
 
     }
 ?>    
