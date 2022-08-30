@@ -116,7 +116,7 @@ class WebServiceADempiereRFV {
           if( $respuesta->status == 'success' ){
               $ID = json_encode($respuesta);
               $developer = new Empleado();
-              $developer->actualizarEmpleadoCerberus('Empleado_SocioNegocio_ADempiere',$vEmpresa,$vEmpleado,$ID);
+              $developer->actualizarEmpleadoCerberus('Baja-SocioNegocio-ADempiere',$vEmpresa,$vEmpleado,$ID);
           }
 
         return $respuesta;
