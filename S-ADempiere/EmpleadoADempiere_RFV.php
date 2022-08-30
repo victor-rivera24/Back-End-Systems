@@ -219,21 +219,20 @@ class EmpleadoADempiereRFV extends ConexionADempiereRFV
     public function consultaSocioNegocioEmpleadoADempiere($vEmpresa,$vEmpleado,$vRFC,$vCURP)
 	{
 
-        (int) $AD_User_ID = null;
+        (int) $C_BPartner_ID = null;
         $Nombre_Empleado = $vEmpleado;
         //$CURP = $vCURP;
         $RFC = $vRFC;
 
         $query = "SELECT 
         GetColumnValue(cb.AD_Client_ID,'AD_Client','Name') AS Empresa
+        ,cb.C_BPartner_ID
         ,cb.Value AS Codigo
         ,cb.Name ||' '||cb.Name2||' '||cb.Description AS SocioNegocio
         ,cb.TaxID AS RFC
         ,cb.Isactive AS ActivoSocio
     FROM C_BPartner AS cb
-        LEFT JOIN AD_User AS us
-            ON us.C_BPartner_ID = cb.C_BPartner_ID
-            AND us.IsInternalUser = 'Y'
+
     WHERE
         cb.C_BP_Group_ID = 1000002
         AND cb.TaxID = '".$vRFC."'
@@ -250,12 +249,12 @@ class EmpleadoADempiereRFV extends ConexionADempiereRFV
         foreach ($resultado as $fila) {
 
             $Nombre_Empleado = $fila['socionegocio'];
-            $AD_User_ID = $fila['ad_user_id'];
+            $C_BPartner_ID = $fila['c_bpartner_id'];
             //$CURP = $fila['curp'];
             $RFC = $fila['rfc'];
 
             $WS_RFV = new WebServiceADempiereRFV();
-            $r = $WS_RFV->desactivarSocioNegocioDirecto($vEmpresa,$vEmpleado,$AD_User_ID);         
+            $r = $WS_RFV->desactivarSocioNegocioDirecto($vEmpresa,$vEmpleado,$C_BPartner_ID);         
         } 
 
         return true;
