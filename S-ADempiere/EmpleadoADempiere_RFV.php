@@ -106,14 +106,15 @@ class EmpleadoADempiereRFV extends ConexionADempiereRFV
         FROM C_BPartner AS cb
             INNER JOIN HR_Employee AS emp
                 ON emp.C_BPartner_ID  = cb.C_BPartner_ID
-                AND emp.Isactive = 'Y'
+                --AND emp.Isactive = 'Y'
             
         WHERE
         
         cb.C_BP_Group_ID = 1000002
         AND cb.TaxID = '".$vRFC."'
         AND emp.NationalCode = '".$vCURP."'
-        AND cb.Isactive = 'Y'";
+        --AND cb.Isactive = 'Y'
+        ";
 
 		$stmt = ConexionADempiereRFV::abrirConexion()->prepare($query);
         //$sentencia = $base_de_datos->prepare($consulta, [PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL,]);
