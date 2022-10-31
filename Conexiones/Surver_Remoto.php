@@ -7,5 +7,4 @@ define('CONTRASENIA_Surver','[User_SURVER#22/.]');
 define('PUERTO_Surver','6432');
 define('ESQUEMA_Surver','refividrio');
 
-
 ?>

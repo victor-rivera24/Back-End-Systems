@@ -8,5 +8,4 @@ define('WS_Rol_RFV','1000016');
 define('WS_Organizacion_RFV','0');
 define('WS_Almacen_RFV','0');
 define('WS_Stage_RFV','0');
-
 ?>

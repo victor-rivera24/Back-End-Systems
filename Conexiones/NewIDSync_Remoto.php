@@ -7,5 +7,4 @@ define('USUARIO_New','postgres');
 define('CONTRASENIA_New','DesarrollosTI20.');
 define('PUERTO_New','6432');
 define('ESQUEMA_New','erp');
-
 ?>
