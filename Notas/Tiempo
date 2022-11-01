@@ -1,0 +1,54 @@
+# m h  dom mon dow   command
+
+#JASPERSERVER
+ 0 */1 * * * /root/ServiceJasperServer.sh > /var/log/jasper.log 2>&1
+
+#MERCADO LIBRE
+ */15 * * * * /root/ServiceMercadoLibre.sh >> /var/log/mercadolibre.log 2>&1
+ 0 */1 * * * /root/Directory.sh > /var/log/carpetaxml.log 2>&1
+
+#AMORESENS
+
+# * */1 * * * /usr/bin/php7.4 /opt/EcommerceAromatizantes/call_method.php >> /var/log/ecommerce.log 2>&1
+# 5 9 * * * /usr/bin/php7.4 /opt/EcommerceAromatizantes/ADempiere/TimerOrden.php ordenesPendientes >> /var/log/order.log 2>&1
+# 5 10 * * * /usr/bin/php7.4 /opt/EcommerceAromatizantes/ADempiere/TimerAntiguedad.php antiguedad >> /var/log/antiguedad.log 2>&1
+# 5 11 * * * /usr/bin/php7.4 /opt/EcommerceAromatizantes/ADempiere/TimerSocioNegocio.php bloqueoSocios >> /var/log/socio.log 2>&1
+
+ * */1 * * * /usr/bin/php7.4 /opt/BackEnd-Amoresens-General/Aromatizantes/TimerAmoresens.php desactivaProductos >> /var/log/ecommerce.log 2>&1
+ 5 9 * * * /usr/bin/php7.4 /opt/BackEnd-Amoresens-General/ADempiere/TimerOrden.php ordenesPendientes >> /var/log/order.log 2>&1
+ 5 10 * * * /usr/bin/php7.4 /opt/BackEnd-Amoresens-General/ADempiere/TimerAntiguedad.php antiguedad >> /var/log/antiguedad.log 2>&1
+ 5 11 * * * /usr/bin/php7.4 /opt/BackEnd-Amoreses-General/ADempiere/TimerSocioNegocio.php bloqueoSocios >> /var/log/socio.log 2>&1
+
+#ADEMPIERE
+# */15 * * * * /usr/bin/php7.4 /opt/Back-End-Systems/TimerADempiereRFV.php OrdenVentaEcommerce  >> /var/log/ADempiere.log 2>&1
+ */15 * * * * /usr/bin/php7.4 /opt/Back-End-Systems/TimerADempiereRFV.php OrdenVentaEcommerce  >> /var/log/ADempiere.log 2>&1
+
+
+#CERBERUS
+ 5 */1 * * * /usr/bin/php7.4 /opt/Back-End-Systems/TimerEmpleadoSurver.php Feliz-Cumple >> /var/log/B_FelizCumple.log 2>&1
+
+#IKEPILI
+ 5 9 * * 5 /usr/bin/php7.4 /opt/Back-End-Systems/TimerInformesPDF.php INF_CEvsZCS >> /var/log/B_Informe.log 2>&1
+ 10 9 * * 5 /usr/bin/php7.4 /opt/Back-End-Systems/TimerInformesPDF.php INF_Existencia_Cero >> /var/log/B_Informe.log 2>&1
+ 15 9 * * 5 /usr/bin/php7.4 /opt/Back-End-Systems/TimerInformesPDF.php INF_Ult_Mov >> /var/log/B_Informe.log 2>&1
+ 5 8 * * 1-5 /usr/bin/php7.4 /opt/Back-End-Systems/TimerInformesPDF.php INF_Flekk  >> /var/log/B_Informe.log 2>&1
+
+
+#SURVER
+ */30 * * * * /usr/bin/php7.4 /opt/Back-End-Systems/TimerEmpleadoCerberus.php Baja-Empleado-ADempiere >> /var/log/B_Cerberus.log 2>&1
+ */20 * * * * /usr/bin/php7.4 /opt/Back-End-Systems/TimerEmpleadoCerberus.php Baja-EmpleadoUsuario-Surver >> /var/log/B_Cerberus.log 2>&1
+ */10 * * * * /usr/bin/php7.4 /opt/Back-End-Systems/TimerEmpleadoCerberus.php Baja-EmpleadoUsuario-ADempiere >> /var/log/B_Cerberus.log 2>&1
+ */25 * * * * /usr/bin/php7.4 /opt/Back-End-Systems/TimerEmpleadoCerberus.php Baja-SocioNegocio-ADempiere >> /var/log/B_Cerberus.log 2>&1
+
+
+ */15 * * * * /usr/bin/php7.4 /opt/Back-End-Systems/TimerEmpleadoDeveloper.php Empleado_ADempiere >> /var/log/B_Surver.log 2>&1
+ */10 * * * * /usr/bin/php7.4 /opt/Back-End-Systems/TimerEmpleadoDeveloper.php Empleado_Developer >> /var/log/B_Surver.log 2>&1
+ */5 * * * * /usr/bin/php7.4 /opt/Back-End-Systems/TimerEmpleadoDeveloper.php Empleado_Usuario_ADempiere >> /var/log/B_Surver.log 2>&1
+ */7 * * * * /usr/bin/php7.4 /opt/Back-End-Systems/TimerEmpleadoDeveloper.php Empleado_SocioNegocio_ADempiere >> /var/log/B_Surver.log 2>&1
+
+ */5 * * * * /usr/bin/php7.4 /opt/Back-End-Systems/TimerWhatsAppEncuesta.php Prueba-WhatsApp >> /var/log/B_Encuesta.log 2>&1
+ 5 */1 * * * /usr/bin/php7.4 /opt/Back-End-Systems/TimerWhatsAppEncuesta.php Encuesta-Covid >> /var/log/B_Encuesta.log 2>&1
+
+
+#MOODLE
+ */3 * * * * /usr/bin/php7.4 /var/www/html/rfv-cursos/admin/cli/cron.php > /var/log/Moodle.log 2>&1
