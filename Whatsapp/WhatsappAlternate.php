@@ -9,7 +9,7 @@
 class WhatsappAlternate{
 
     private $endpoint = 'https://apps-ws.refividrio.com.mx:6868/whatsapp/';
-    private $token = 'eyJhbGciOiJIUzI1NiJ9.dXN1YXJpb01lc3NhZ2VCaXJkV2hhdHNhcHA.k_9BpJn3XKh5U-j-IboLzrM2xf30KniPvaXNvZPsOgY';  
+    private $token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzeXN0ZW0iOiJCQUNLLUVORC1TWVNURU0iLCJ1c2VyIjoidmljdG9yLnJpdmVyYSIsImlhdCI6MTY2NzM0NTQ2NH0._kGB3B3SLp46hlntbWpzwiK0mpqdotutvXnW1HctRoo';  
 
 
     /**
@@ -24,8 +24,8 @@ class WhatsappAlternate{
         try {
           $response = null;
           $url = $this->endpoint.'testService';
-          // $header = array("Content-Type: application/json","access-token: $this->token");
-          $header = array("Content-Type: application/json");
+          $header = array("Content-Type: application/json","access-token: $this->token");
+        //   $header = array("Content-Type: application/json");
 
           $ch = curl_init($url);
         //   curl_setopt($ch, CURLOPT_POST,1);
@@ -81,8 +81,8 @@ Este es un mensaje de automatico, por lo cual no emite respuesta.';
         try {
           $response = null;
           $url = $this->endpoint.'sendIndividualMessage';
-          // $header = array("Content-Type: application/json","access-token: $this->token");
-          $header = array("Content-Type: application/json");
+          $header = array("Content-Type: application/json","access-token: $this->token");
+        //   $header = array("Content-Type: application/json");
 
           $jsonData = array(
                             "vPhone" => $p_Celular
