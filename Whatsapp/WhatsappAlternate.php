@@ -13,6 +13,56 @@ class WhatsappAlternate{
 
 
     /**
+     * Envía mensaje para comprobar la sesión activa.
+     * 
+     * @since 01/11/2022 se genero el método
+     * @author Victor Rivera
+     */       
+    public function mensajePrueba()
+    {
+
+        try {
+          $response = null;
+          $url = $this->endpoint.'testService';
+          // $header = array("Content-Type: application/json","access-token: $this->token");
+          $header = array("Content-Type: application/json");
+
+          $ch = curl_init($url);
+        //   curl_setopt($ch, CURLOPT_POST,1);
+        //   curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+          curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+          $result =  curl_exec($ch);
+          $status = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
+          $status_endpoint = curl_error($ch);
+          curl_close($ch);
+
+          // var_dump ($result);
+
+          if ( $status != 201 && $status != 200 ) {
+              // return  ("Error: call to URL $url failed with status $status, response $result, curl_error " . $status_endpoint . ",curl_errno" . $status_endpoint );
+              $response  = ("Error: call to URL $url failed with status $status, response $result, curl_error " . $status_endpoint . ",curl_errno" . $status_endpoint );
+
+          }else{
+              $response = $result;
+
+          }
+
+          // print_r (json_decode($result));
+          // return json_decode($result);
+          print_r($response);
+          return $response;
+          
+      } catch (\Throwable $th) {
+          echo $th;
+          return false;
+      }
+
+    }
+  
+    
+    /**
      * Retorna el json con la respuesta de la petición.
      * 
      * @since 31/10/2022 se genero el método
@@ -74,11 +124,20 @@ Este es un mensaje de automatico, por lo cual no emite respuesta.';
       }
 
     }
-                
+
+
+
+
+
 }
+
+
+
+
+                
 
     /** HABILITAR CUANDO SE QUIERA EJECUTAR LOCALMENTE */
 
-// $msg = new WhatsappAlternate();
-// $msg->mensajeEncuestaFaltante('Victor Rivera','5576100176');
-
+$msg = new WhatsappAlternate();
+// $msg->mensajePrueba();
+$msg->mensajeEncuestaFaltante('Victor Rivera','5576100176');

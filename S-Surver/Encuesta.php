@@ -17,6 +17,27 @@ class Encuesta extends ConexionSurver
 {
 
     /**
+     * Registra la transacción del movimiento de la API.
+     * 
+     * @since 31/10/2022 se genero el método
+     * @author Victor Rivera
+     */   
+    public function envioMensajePrueba()
+	{
+        try {
+
+            $instancia_whatsApp = new WhatsappAlternate();
+            $resultadoWhatsApp = $instancia_whatsApp->mensajePrueba();
+
+        } catch (Exception $exc) {
+        
+            return $exc;
+        }
+
+	}
+
+
+    /**
      * Retorna el listado del empleado que no han realizado la encuesta.
      * 
      * @since 31/10/2022 se genero el método
