@@ -60,7 +60,7 @@ class WhatsappAlternate{
       }
 
     }
-  
+
     
     /**
      * Retorna el json con la respuesta de la petición.
@@ -73,9 +73,16 @@ class WhatsappAlternate{
 
         $p_Nombre = $vNombre;
         $p_Celular = $vCelular;
-        $p_Mensaje = 'Estimado usuario *'.$p_Nombre.'*
-Le recordamos realizar su encuesta covid. Para evitar que sean sancionados.
-Este es un mensaje de automatico, por lo cual no emite respuesta.';
+        $p_Mensaje = 'Estimado colaborador *'.$p_Nombre.'*
+Te recordamos responder tu *encuesta semanal COVID-19* este fin de semana. Para evitar que seas sancionado.
+El link de ingreso es el siguiente:
+https://surver.code-byte.com.mx/surver/
+
+Dudas o soporte, vía WhatsApp al  55 6988 3029
+
+Este es un mensaje automático, por lo cual no emite respuesta.
+Saludos.
+';
         
 
         try {
