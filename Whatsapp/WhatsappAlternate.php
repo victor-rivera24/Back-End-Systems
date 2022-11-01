@@ -24,7 +24,7 @@ class WhatsappAlternate{
         try {
           $response = null;
           $url = $this->endpoint.'testService';
-          $header = array("Content-Type: application/json","access-token: $this->token");
+          $header = array("Content-Type: application/json","api-key: $this->token");
         //   $header = array("Content-Type: application/json");
 
           $ch = curl_init($url);
@@ -81,7 +81,7 @@ Este es un mensaje de automatico, por lo cual no emite respuesta.';
         try {
           $response = null;
           $url = $this->endpoint.'sendIndividualMessage';
-          $header = array("Content-Type: application/json","access-token: $this->token");
+          $header = array("Content-Type: application/json","api-key: $this->token");
         //   $header = array("Content-Type: application/json");
 
           $jsonData = array(
