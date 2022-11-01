@@ -193,8 +193,8 @@ class Encuesta extends ConexionSurver
 
     /** HABILITAR CUANDO SE QUIERA EJECUTAR LOCALMENTE */
 
-    $metodo = new Encuesta();
-    $metodo->consultaEmpleadoEncuesta();
+    // $metodo = new Encuesta();
+    // $metodo->consultaEmpleadoEncuesta();
 
 
 ?>

@@ -16,7 +16,7 @@
 
   class TimerWhatsAppEncuesta{
  
-    public function envioMensajePrueba(){
+    public function envioMensajePruebaIndivual(){
  
       $encuesta = new Encuesta();
       $encuesta->envioMensajePrueba();
@@ -36,7 +36,7 @@
  
     case 'Prueba-WhatsApp': 
       $Timer = new TimerWhatsAppEncuesta();
-      $Timer->envioMensajePrueba(); 
+      $Timer->envioMensajePruebaIndivual(); 
 
     break;
 

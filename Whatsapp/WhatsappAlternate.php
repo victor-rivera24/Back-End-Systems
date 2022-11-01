@@ -132,12 +132,8 @@ Este es un mensaje de automatico, por lo cual no emite respuesta.';
 }
 
 
-
-
-                
-
     /** HABILITAR CUANDO SE QUIERA EJECUTAR LOCALMENTE */
 
-$msg = new WhatsappAlternate();
+// $msg = new WhatsappAlternate();
+// $msg->mensajeEncuestaFaltante('Victor Rivera','5576100176');
 // $msg->mensajePrueba();
-$msg->mensajeEncuestaFaltante('Victor Rivera','5576100176');
