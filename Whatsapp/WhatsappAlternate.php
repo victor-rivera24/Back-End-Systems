@@ -1,33 +1,42 @@
 <?php 
 
 /**
- * Esta clase fue generarada realizar peticiones a la API de WhatsApps MessageBird
+ * Esta clase fue generarada realizar peticiones a la API de WhatsApps Terceros
  * 
  * @since 31/10/2022 se creó esta clase
  * @author Victor Rivera
  */
-class WhatsappBirdInterno{
+class WhatsappAlternate{
 
-    private $endpoint = 'https://apps-ws.refividrio.com.mx:5252/';
+    private $endpoint = 'https://apps-ws.refividrio.com.mx:6868/whatsapp/';
     private $token = 'eyJhbGciOiJIUzI1NiJ9.dXN1YXJpb01lc3NhZ2VCaXJkV2hhdHNhcHA.k_9BpJn3XKh5U-j-IboLzrM2xf30KniPvaXNvZPsOgY';  
-    private $urlMedia = "https://apps.refividrio.com.mx/resources/amoresens/CUPON_DE_REGALO.png";
+
 
     /**
-     * Envia mensaje de por WhatsApp al contacto.
+     * Retorna el json con la respuesta de la petición.
      * 
      * @since 31/10/2022 se genero el método
      * @author Victor Rivera
-     */           
-    public function mensajeFelizCumple($vEmpleado,$vCelular){
+     */       
+    public function mensajeEncuestaFaltante($vNombre,$vCelular)
+    {
 
-      try {
+        $p_Nombre = $vNombre;
+        $p_Celular = $vCelular;
+        $p_Mensaje = 'Estimado usuario *'.$p_Nombre.'*
+Le recordamos realizar su encuesta covid. Para evitar que sean sancionados.
+Este es un mensaje de automatico, por lo cual no emite respuesta.';
+        
+
+        try {
           $response = null;
-          $url = $this->endpoint.'happyBirthdayEmployee';
-          $header = array("Content-Type: application/json","access-token: $this->token");
-         
+          $url = $this->endpoint.'sendIndividualMessage';
+          // $header = array("Content-Type: application/json","access-token: $this->token");
+          $header = array("Content-Type: application/json");
+
           $jsonData = array(
-                            "vCelular" => $vCelular
-                            ,"vNombre" => $vEmpleado
+                            "vPhone" => $p_Celular
+                            ,"vMessage" => $p_Mensaje
                           );
 
           $json = json_encode($jsonData);
@@ -64,12 +73,12 @@ class WhatsappBirdInterno{
           return false;
       }
 
-  }
+    }
                 
 }
 
     /** HABILITAR CUANDO SE QUIERA EJECUTAR LOCALMENTE */
 
-// $msg = new WhatsappBirdInterno();
-// $msg->mensajeFelizCumple('VICTOR','5576100176');
+// $msg = new WhatsappAlternate();
+// $msg->mensajeEncuestaFaltante('Victor Rivera','5576100176');
 

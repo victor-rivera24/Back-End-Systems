@@ -38,53 +38,6 @@ class EmpleadoFelizCumple extends ConexionSurver
                         AND EXTRACT(DAY FROM CURRENT_DATE) = EXTRACT(DAY FROM fecha_nacimiento) ORDER BY EXTRACT(DAY FROM fecha_nacimiento)
                 ";
 
-
-        // $query = "
-        //         SELECT 
-        //             e.id_empleado
-        //             ,UPPER(CONCAT(e.nombre,' ',e.paterno,' ',e.materno)) AS nombre_empleado
-        //             ,refividrio.fecha_date_es(fecha_nacimiento) As fecha_nacimiento
-        //             ,e.correo
-        //             ,CASE WHEN length(celular) = 10 THEN celular ELSE NULL END AS celular
-        //         FROM refividrio.empleado e 
-        //             INNER JOIN refividrio.segmento AS S 
-        //                 ON s.id_segmento = e.id_segmento 
-        //         WHERE 
-        //             s.id_empresa IN (1,2,3) 
-        //             --AND correo_verificado = true 
-        //             AND e.activo = true
-        //             AND e.perfilcalculo <> 'Estadia'
-        //             AND TO_CHAR(fecha_nacimiento,'MM') = '03'
-		// 			AND EXTRACT(DAY FROM fecha_nacimiento) IN (1,2,3,4,5,6,7)
-        //             --AND EXTRACT(MONTH FROM CURRENT_DATE) = EXTRACT(MONTH FROM fecha_nacimiento) 
-        //             --AND EXTRACT(DAY FROM CURRENT_DATE-1) = EXTRACT(DAY FROM fecha_nacimiento) ORDER BY EXTRACT(DAY FROM fecha_nacimiento)
-        //             ORDER BY e.id_empleado ASC	    
-        //                         ";
-
-
-                // SELECT 
-                //     e.id_empleado
-                //     ,UPPER(CONCAT(e.nombre,' ',e.paterno,' ',e.materno)) AS nombre_empleado
-                //     ,refividrio.fecha_date_es(fecha_nacimiento) As fecha_nacimiento
-				// 	--,EXTRACT(DAY FROM fecha_nacimiento)
-                //     ,e.correo
-                //     ,CASE WHEN length(celular) = 10 THEN celular ELSE NULL END AS celular
-                // FROM refividrio.empleado e 
-                //     INNER JOIN refividrio.segmento AS S 
-                //         ON s.id_segmento = e.id_segmento 
-                // WHERE 
-                //     s.id_empresa IN (1,2,3) 
-                //     --AND correo_verificado = true 
-                //     AND e.activo = true
-                //     AND correo IS NOT NULL AND correo <> ''
-				// 	AND e.perfilcalculo <> 'Estadia'
-                //     AND TO_CHAR(fecha_nacimiento,'MM') = '03'
-				// 	--AND EXTRACT(DAY FROM fecha_nacimiento) IN (1,2,3,4,5,6,7)
-                //     --AND EXTRACT(MONTH FROM CURRENT_DATE) = EXTRACT(MONTH FROM fecha_nacimiento) 
-                //     --AND EXTRACT(DAY FROM CURRENT_DATE-1) = EXTRACT(DAY FROM fecha_nacimiento) ORDER BY EXTRACT(DAY FROM fecha_nacimiento)
-                //     ORDER BY EXTRACT(DAY FROM fecha_nacimiento) ASC
-
-
 		$stmt = ConexionSurver::abrirConexion()->prepare($query, [PDO::ATTR_CURSOR => PDO::CURSOR_SCROLL,]);
         $stmt->execute();
 
@@ -102,16 +55,6 @@ class EmpleadoFelizCumple extends ConexionSurver
             $vCorreoElectronico = $row['correo'];
             $vCelular = $row['celular'];          
             
-            // $vRespuesta =  $this->actualizarEmpleadoBaja($vIdEmpresa,$vIdEmpleadoCeberus,$vIdEmpleadoSurver);
-            // $instancia_correo = new Email();
-            // $resultadoCorreoElectronico = $instancia_correo->enviarCorreoFelizCumple($vEmpleado,$vCorreoElectronico,$vFechaNacimiento);
-
-            // if(isset($vCelular)){
-
-            //     $instancia_whatsApp = new WhatsappBirdInterno();
-            //     $resultadoWhatsApp = $instancia_whatsApp->mensajeFelizCumple($vEmpleado,$vCelular);
-
-            // }
             $vRespuesta = $this->registraNotificacionCorreoElectronico($vIdEmpleado,$vEmpleado,$vCorreoElectronico,$vFechaNacimiento);
 
             if(isset($vCelular)){
