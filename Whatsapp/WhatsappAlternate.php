@@ -8,7 +8,7 @@
  */
 class WhatsappAlternate{
 
-    private $endpoint = 'https://apps-ws.refividrio.com.mx:6868/whatsapp/';
+    private $endpoint = 'https://apps-ws.refividrio.com.mx:6868/v1/whatsapp/';
     private $token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzeXN0ZW0iOiJCQUNLLUVORC1TWVNURU0iLCJ1c2VyIjoidmljdG9yLnJpdmVyYSIsImlhdCI6MTY2NzM0NTQ2NH0._kGB3B3SLp46hlntbWpzwiK0mpqdotutvXnW1HctRoo';  
 
 
