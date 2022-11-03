@@ -61,8 +61,8 @@ class Encuesta extends ConexionSurver
         ,seg.nombre As Segmento
         ,emp.id_empleado	
         ,CONCAT(emp.paterno, ' ', emp.materno, ' ', emp.nombre) AS Empleado 
-        --,e.celular AS Celular
-        ,'5576100176'  AS Celular	
+        ,e.celular AS Celular
+        --,'5576100176'  AS Celular	
         --,encuesta.*
     
     FROM  refividrio.empresa_encuesta ee
@@ -88,8 +88,8 @@ class Encuesta extends ConexionSurver
                     AND enc_emp.id_empresa IN (2,3)
             WHERE
                 enc.activo = true
-                AND (CURRENT_DATE-2) BETWEEN enc.validodesde::Date AND enc.validohasta::Date
-                --AND CURRENT_DATE BETWEEN enc.validodesde::Date AND enc.validohasta::Date
+                --AND (CURRENT_DATE-2) BETWEEN enc.validodesde::Date AND enc.validohasta::Date
+                AND CURRENT_DATE BETWEEN enc.validodesde::Date AND enc.validohasta::Date
 
                 --AND enc_e.termino = false
             ORDER BY enc.id_encuesta		
