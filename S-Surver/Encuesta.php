@@ -61,7 +61,7 @@ class Encuesta extends ConexionSurver
         ,seg.nombre As Segmento
         ,emp.id_empleado	
         ,CONCAT(emp.paterno, ' ', emp.materno, ' ', emp.nombre) AS Empleado 
-        ,e.celular AS Celular
+        ,emp.celular AS Celular
         --,'5576100176'  AS Celular	
         --,encuesta.*
     
