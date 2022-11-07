@@ -277,6 +277,47 @@ class Email{
              }
         }
 
+        public function CorreoNotificacionIncidencias($Cuerpo, $Asunto, $vCorreo, $vEmpleado){
+            $Encabezado = 'Notificación de Incidencias.';
+            $Mail = new PHPMailer();	 
+            $FormatoHMTL = new PlantillaHtmlEnvio();
+            $HTML = $FormatoHMTL->notificacionIncidencias($Cuerpo);
+                
+            try {
+                $Mail->CharSet = 'UTF-8';
+                $Mail->isSMTP();
+                $Mail->Host = $this->vDomain;
+                $Mail->SMTPAuth = true;
+                $Mail->Username = $this->vUser;
+                $Mail->Password = $this->vPassword;
+                $Mail->SMTPSecure = "ssl";
+                $Mail->Port = 465;
+                    
+
+                // Destinatario 
+                $Mail->setFrom($this->vUser, $Encabezado);
+                $Mail->addAddress($vCorreo,$vEmpleado);
+            
+                // Mensaje
+                $Mail->isHTML(true);
+                $Mail->Subject = $Asunto;
+                $Mail ->MsgHTML($HTML);
+            
+                if($Mail->send()){
+                    $mensaje = 'Correo Enviado';
+                    
+    
+                }else{
+                    $mensaje = $Mail->ErrorInfo;
+                }
+                return $mensaje;
+
+            } catch (Exception $e) {
+                $mensaje = $Mail->ErrorInfo;
+                return $mensaje;
+             }
+        }
+
 }
 
  //$correo = new Email();
