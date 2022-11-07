@@ -13,7 +13,7 @@ class NotificacionIncidencias
 
     public static function inicializacion()
     {
-        self::$url = 'http://localhost:5860/api/';
+        self::$url = 'https://apps.refividrio.com.mx:5858/api/';
         self::$api_key = 'surver_$MGsecretkey$Surver$NodeJS&ApiCerberus';
         self::$meses = ['N/A', 'ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
     }
