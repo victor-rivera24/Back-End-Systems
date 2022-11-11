@@ -163,7 +163,7 @@ class NotificacionIncidencias
             $arrayEmpleados = array();
 
             foreach ($result['data'] as $incidencia) {
-                $valor = NotificacionIncidencias::validarExistencia($arrayDepartamentos, $incidencia["idEmpleado"]);
+                $valor = NotificacionIncidencias::validarExistencia($arrayEmpleados, $incidencia["idEmpleado"]);
 
                 if ($valor === false && $incidencia["idDepartamento"] == $idDepartamento) {
                     $arrayEmpleados[] =  $incidencia["idEmpleado"];
